@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /mnt/dados/producao
+docker build --rm -t local/php:7.4 php74

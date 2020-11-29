@@ -1,0 +1,20 @@
+version: '3.5'
+
+networks:
+  web:
+    external: true
+
+services:
+ php:
+  container_name: php
+  image: local/php:7.4
+  restart: always
+  ports:
+    - "80:80"
+  volumes:
+    - /mnt/dados/producao/php74/conf/supervisord/supervisord.conf:/etc/supervisord.conf
+    - /mnt/dados/producao/php74/conf/supervisord/supervisord.d:/etc/supervisord.d
+    - /mnt/dados/producao/php74/scripts:/scripts
+    - ./logs:/var/log/supervisor
+  networks:
+    - web
