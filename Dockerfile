@@ -14,9 +14,9 @@ ADD scripts /scripts/
 
 RUN dnf install -y /scripts/oracle*
 
-ENV ORACLE_HOME=/usr/lib/oracle/19.8/client64
+ENV ORACLE_HOME=/usr/lib/oracle/21/client64
 ENV PATH=$PATH:$ORACLE_HOME/bin
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/oracle/19.8/client64/lib/
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib/
 ENV TNS_ADMIN=$ORACLE_HOME/network/admin
 ENV NLS_LANG=AMERICAN_AMERICA.TH8TISASCII
 

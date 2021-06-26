@@ -10,15 +10,15 @@ services:
   image: local/php:7.4
   restart: always
   ports:
-    - "80:80"
+    - "8080:80"
   volumes:
-    - /mnt/dados/producao/php74/conf/supervisord/supervisord.conf:/etc/supervisord.conf
-    - /mnt/dados/producao/php74/conf/supervisord/supervisord.d:/etc/supervisord.d
-    - /mnt/dados/producao/php74/conf/httpd/conf.d:/etc/httpd/conf.d
-    - /mnt/dados/producao/php74/conf/php/php.d:/etc/php.d
-    - /mnt/dados/producao/php74/conf/php/php-fpm.d:/etc/php-fpm.d
-    - /mnt/dados/producao/php74/dados/www:/var/www
-    - /mnt/dados/producao/php74/scripts:/scripts
+    - ./conf/supervisord/supervisord.conf:/etc/supervisord.conf
+    - ./conf/supervisord/supervisord.d:/etc/supervisord.d
+    - ./conf/httpd/conf.d:/etc/httpd/conf.d
+    - ./conf/php/php.d:/etc/php.d
+    - ./conf/php/php-fpm.d:/etc/php-fpm.d
+    - ./dados/www:/var/www
+    - ./scripts:/scripts
     - ./logs:/var/log/supervisor
   networks:
     - web
