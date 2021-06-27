@@ -3,6 +3,7 @@ httpconf=/scripts/conf/httpd/conf.d
 phpconf=/scripts/conf/php/php.d
 phpfpmconf=/scripts/conf/php/php-fpm.d
 supervisord=/scripts/conf/supervisord/supervisord.d
+html=/scripts/html
 for entry in `ls "$httpconf"`
 do
     file=/etc/httpd/conf.d/"$entry"
@@ -39,6 +40,16 @@ do
     if [ ! -f "${file}" ]; then
         mkdir -p /etc/supervisord.d/
         cp "$supervisord"/"$entry" "$file"
+        echo "$entry"
+    fi
+done
+
+for entry in `ls "$html"`
+do
+    file=/var/www/html/"$entry"
+    if [ ! -f "${file}" ]; then
+        mkdir -p /var/www/html/
+        cp "$html"/"$entry" "$file"
         echo "$entry"
     fi
 done
