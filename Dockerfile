@@ -26,10 +26,13 @@ dnf config-manager --set-enabled remi && \
 dnf install -y ca-certificates curl git ImageMagick php php-apcu php-cli php-common php-ctype php-curl php-dom php-exif php-fileinfo php-gd php-gettext php-iconv php-intl php-json php-ldap php-mbstring php-memcached php-openssl php-pdo php-pdo_mysql php-mysqlnd php-pear php-pecl-apcu php-pecl-memcache php-pecl-mongodb php-pecl-xdebug php-pgsql php-phar php-PHPMailer php-simplexml php-sqlite3 php-tokenizer php-xml php-xmlreader php-xmlwriter php-zip sqlite tzdata php-oci8 libnotify php-opcache;
 
 RUN mkdir /run/php-fpm && \
-chmod 755 /run/php-fpm;
+chmod 755 /run/php-fpm && \
+cp /scripts/start.sh / && \
+cp /scripts/conf/supervisord/supervisord.conf /etc && \
+cp -r /scripts/conf/supervisord/supervisord.d /etc;
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
 php composer-setup.php --install-dir=bin --filename=composer && \
 php -r "unlink('composer-setup.php');";
 
-CMD ["/scripts/start.sh"]
+CMD ["/start.sh"]
