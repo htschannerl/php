@@ -1,2 +1,3 @@
 #!/bin/bash
-docker build --rm -t htschannerl/php:7.4.21 ./
+docker build --rm -t htschannerl/php:7.4.25 ./
+docker build --rm -t htschannerl/php:latest ./
