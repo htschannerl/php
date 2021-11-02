@@ -5,3 +5,8 @@ docker build --rm -t htschannerl/php:8.0.12 ./php80
 docker build --rm -t htschannerl/php:8.0 ./php80
 docker build --rm -t htschannerl/php:latest ./php80
 
+docker push htschannerl/php:7.4.25
+docker push htschannerl/php:7.4
+docker push htschannerl/php:8.0.12
+docker push htschannerl/php:8.0
+docker push htschannerl/php:latest

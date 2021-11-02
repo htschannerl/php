@@ -2,6 +2,7 @@
 httpconf=/scripts/conf/httpd/conf.d
 phpconf=/scripts/conf/php/php.d
 phpfpmconf=/scripts/conf/php/php-fpm.d
+phpztsd=/scripts/conf/php/php-zts.d
 supervisord=/scripts/conf/supervisord/supervisord.d
 html=/scripts/html
 for entry in `ls "$httpconf"`
@@ -34,6 +35,16 @@ do
     fi
 done
 
+for entry in `ls "$phpztsd"`
+do
+    file=/etc/php-fpm.d/"$entry"
+    if [ ! -f "${file}" ]; then
+        mkdir -p /etc/php-fpm.d/
+        cp "$phpztsd"/"$entry" "$file"
+        echo "$entry"
+    fi
+done
+
 for entry in `ls "$supervisord"`
 do
     file=/etc/supervisord.d/"$entry"
@@ -44,6 +55,7 @@ do
     fi
 done
 
+mkdir -p /var/www/html
 for entry in `ls "$html"`
 do
     file=/var/www/html/"$entry"

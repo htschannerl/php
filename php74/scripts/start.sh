@@ -44,11 +44,11 @@ do
     fi
 done
 
+mkdir -p /var/www/html
 for entry in `ls "$html"`
 do
     file=/var/www/html/"$entry"
     if [ ! -f "${file}" ]; then
-        mkdir -p /var/www/html/
         cp "$html"/"$entry" "$file"
         echo "$entry"
     fi
