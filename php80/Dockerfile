@@ -21,7 +21,7 @@ ENV TNS_ADMIN=$ORACLE_HOME/network/admin
 ENV NLS_LANG=AMERICAN_AMERICA.TH8TISASCII
 
 RUN dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm && \
-dnf module enable -y php:remi-7.4 && \
+dnf module enable -y php:remi-8.0 && \
 dnf config-manager --set-enabled remi && \
 dnf install -y ca-certificates curl git ImageMagick php php-apcu php-cli php-common php-ctype php-curl php-dom php-exif php-fileinfo php-gd php-gettext php-iconv php-intl php-json php-ldap php-mbstring php-memcached php-openssl php-pdo php-pdo_mysql php-mysqlnd php-pear php-pecl-apcu php-pecl-memcache php-pecl-mongodb php-pecl-xdebug php-pgsql php-phar php-PHPMailer php-simplexml php-sqlite3 php-tokenizer php-xml php-xmlreader php-xmlwriter php-zip sqlite tzdata php-oci8 libnotify php-opcache;
 
