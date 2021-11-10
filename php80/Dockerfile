@@ -1,16 +1,15 @@
 FROM centos:centos8
 
-RUN dnf install -y epel-release && dnf update -y && dnf install -y dnf-plugins-core;
+RUN dnf install -y epel-release && dnf update -y && dnf install -y dnf-plugins-core && \
+dnf install -y wget rsync && dnf install -y supervisor bash-completion net-tools vim libnsl;
 
-RUN dnf install -y supervisor bash-completion net-tools vim libnsl;
+ADD scripts /scripts/
 
 RUN dnf install -y httpd mod_ssl && \
 /usr/libexec/httpd-ssl-gencerts;
 
 RUN dnf module enable -y nodejs:12 && \
 dnf install -y nodejs;
-
-ADD scripts /scripts/
 
 RUN dnf install -y /scripts/oracle*
 
@@ -33,6 +32,7 @@ cp -r /scripts/conf/supervisord/supervisord.d /etc;
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
 php composer-setup.php --install-dir=bin --filename=composer && \
-php -r "unlink('composer-setup.php');";
+php -r "unlink('composer-setup.php');" && \
+/scripts/conf.sh;
 
 CMD ["/start.sh"]
