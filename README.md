@@ -1,2 +1,2 @@
-# php74
-Imagem do PHP 7.4
+# php
+Imagem do PHP com Apache
