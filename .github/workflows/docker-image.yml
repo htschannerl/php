@@ -28,4 +28,4 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     
     - name: Docker push
-      run: docker push htschannerl/php:8.1
+      run: docker push --all-tags htschannerl/php
