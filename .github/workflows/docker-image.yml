@@ -19,8 +19,6 @@ jobs:
 
     - name: Docker Login
       run: docker login -u htschannerl -p $env:DOCKER_PASSWORD
-      env:
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Docker logout
       run: docker logout
