@@ -12,6 +12,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      working-directory: ./php81/
-      run: docker build . --file Dockerfile --tag php:8.1
+
+#    - name: Build the Docker image
+#      working-directory: ./php81/
+#      run: docker build . --file Dockerfile --tag htschannerl/php:8.1
+
+    - name: Docker Login
+      run: docker login -u htschannerl -p $env:DOCKER_PASSWORD
+      env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Docker logout
+      run: docker logout
+      if: ${{ always() && steps.docker_login.outcome != 'skipped' }}
