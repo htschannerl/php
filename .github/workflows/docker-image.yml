@@ -13,13 +13,17 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Build the Docker image 8.0
+      working-directory: ./Dockerfiles/
+      run: docker build . --file Dockerfile-80 --tag htschannerl/php:8.0 && docker image tag htschannerl/php htschannerl/php:8.0.23
+
     - name: Build the Docker image 8.1
-      working-directory: ./php81/
-      run: docker build . --file Dockerfile --tag htschannerl/php && docker image tag htschannerl/php htschannerl/php:8.1
+      working-directory: ./Dockerfiles/
+      run: docker build . --file Dockerfile-81 --tag htschannerl/php && docker image tag htschannerl/php htschannerl/php:8.1
 
     - name: Build the Docker image 8.1.10
-      working-directory: ./php8110/
-      run: docker build . --file Dockerfile --tag htschannerl/php:8.1.10
+      working-directory: ./Dockerfiles/
+      run: docker build . --file Dockerfile-8110 --tag htschannerl/php:8.1.10
 
     - name: Docker Login
       uses: docker/login-action@v1
