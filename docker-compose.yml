@@ -7,18 +7,12 @@ networks:
 services:
  php:
   container_name: php
-  image: htschannerl/php:7.4.20
+  image: local/php:8.0
   restart: always
   ports:
     - "8080:80"
   volumes:
-#    - ./conf/supervisord/supervisord.conf:/etc/supervisord.conf
-    - ./conf/supervisord/supervisord.d:/etc/supervisord.d
-    - ./conf/httpd/conf.d:/etc/httpd/conf.d
-    - ./conf/php/php.d:/etc/php.d
-    - ./conf/php/php-fpm.d:/etc/php-fpm.d
+    - ./conf/php/php.d/myphp.ini:/usr/local/etc/php/conf.d/myphp.ini
     - ./dados/www:/var/www
-#    - ./scripts:/scripts
-    - ./logs:/var/log/supervisor
   networks:
     - web
