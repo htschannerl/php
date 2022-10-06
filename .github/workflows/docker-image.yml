@@ -16,6 +16,10 @@ jobs:
     - name: Build the Docker image 8.0
       working-directory: ./Dockerfiles/
       run: docker build . --file Dockerfile-80 --tag htschannerl/php:8.0
+    
+    - name: Build the Docker image 8.0.24
+      working-directory: ./Dockerfiles/
+      run: docker build . --file Dockerfile-8024 --tag htschannerl/php:8.0.24
 
     - name: Build the Docker image 8.0.23
       working-directory: ./Dockerfiles/
