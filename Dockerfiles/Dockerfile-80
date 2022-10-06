@@ -6,6 +6,7 @@ cron \
 wget \
 ca-certificates \
 jq \
+sendmail \
 && rm -rf /var/lib/apt/lists/*
 
 RUN mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
