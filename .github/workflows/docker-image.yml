@@ -6,7 +6,7 @@ on:
 
 jobs:
 
-  build:
+  build-x86:
 
     runs-on: ubuntu-latest
 
@@ -15,27 +15,7 @@ jobs:
 
     - name: Build the Docker image 8.0
       working-directory: ./Dockerfiles/
-      run: docker build . --file Dockerfile-80 --tag htschannerl/php:8.0
-    
-    - name: Build the Docker image 8.0.24
-      working-directory: ./Dockerfiles/
-      run: docker build . --file Dockerfile-8024 --tag htschannerl/php:8.0.24
-
-    - name: Build the Docker image 8.0.23
-      working-directory: ./Dockerfiles/
-      run: docker build . --file Dockerfile-8023 --tag htschannerl/php:8.0.23
-
-    - name: Build the Docker image 8.1
-      working-directory: ./Dockerfiles/
-      run: docker build . --file Dockerfile-81 --tag htschannerl/php && docker image tag htschannerl/php htschannerl/php:8.1
-
-    - name: Build the Docker image 8.1.11
-      working-directory: ./Dockerfiles/
-      run: docker build . --file Dockerfile-8111 --tag htschannerl/php:8.1.11
-
-    - name: Build the Docker image 8.1.10
-      working-directory: ./Dockerfiles/
-      run: docker build . --file Dockerfile-8110 --tag htschannerl/php:8.1.10
+      run: docker build . --file Dockerfile --tag htschannerl/php:8.0
 
     - name: Docker Login
       uses: docker/login-action@v1
@@ -45,3 +25,27 @@ jobs:
     
     - name: Docker push
       run: docker push --all-tags htschannerl/php
+
+  build-arm64:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build the Docker image 8.0
+      working-directory: ./Dockerfiles/
+      run: docker build . --file Dockerfile --tag htschannerl/php:8.0
+      with:
+          arch: aarch64
+
+    - name: Docker Login
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    
+    - name: Docker push
+      run: docker push --all-tags htschannerl/php
+      with:
+          arch: aarch64
