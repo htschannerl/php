@@ -30,6 +30,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        include:
+          - arch: aarch64
+            distro: ubuntu22.04
+
     steps:
     - uses: actions/checkout@v3
 
