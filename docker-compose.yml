@@ -7,7 +7,7 @@ networks:
 services:
  php:
   container_name: php
-  image: local/php:8.0
+  image: htschannerl/php:8.3.8
   restart: always
   ports:
     - "8080:80"
