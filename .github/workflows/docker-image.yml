@@ -13,30 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Build the Docker image 8.0
-      working-directory: ./Dockerfiles/
-      run: docker build . --file Dockerfile-80 --tag htschannerl/php:8.0
-    
-    - name: Build the Docker image 8.0.24
-      working-directory: ./Dockerfiles/
-      run: docker build . --file Dockerfile-8024 --tag htschannerl/php:8.0.24
-
-    - name: Build the Docker image 8.0.23
-      working-directory: ./Dockerfiles/
-      run: docker build . --file Dockerfile-8023 --tag htschannerl/php:8.0.23
-
-    - name: Build the Docker image 8.1
-      working-directory: ./Dockerfiles/
-      run: docker build . --file Dockerfile-81 --tag htschannerl/php
-
-    - name: Build the Docker image 8.1.11
-      working-directory: ./Dockerfiles/
-      run: docker build . --file Dockerfile-8111 --tag htschannerl/php:8.1.11
-
-    - name: Build the Docker image 8.1.10
-      working-directory: ./Dockerfiles/
-      run: docker build . --file Dockerfile-8110 --tag htschannerl/php:8.1.10
-
     - name: Build the Docker image 8.2.20
       working-directory: ./Dockerfiles/
       run: docker build . --file Dockerfile-8.2.20 --tag htschannerl/php:8.2.20
