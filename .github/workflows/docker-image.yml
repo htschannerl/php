@@ -28,7 +28,7 @@ jobs:
           context: ./Dockerfiles
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: htschannerl/php:latest
+          tags: htschannerl/php:latest,htschannerl/php:8.3.8
 
       - name: Logout from Docker Hub
         run: docker logout
