@@ -18,13 +18,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: uraimo/run-on-arch-action@v2
-        name: Build the Docker image 8.0
+        name: Build the Docker image 8.3.8
         id: build
         with:
           arch: ${{ matrix.arch }}
           distro: ${{ matrix.distro }}        
-          run: docker build . --file ./Dockerfiles/Dockerfile --tag htschannerl/php:8.0
-      
+          run: docker build . --file Dockerfile-8.3.8 --tag htschannerl/php:latest && docker image tag htschannerl/php:latest htschannerl/php:8.3 && docker image tag htschannerl/php:latest htschannerl/php:8.3.8
 
       - name: Docker Login
         uses: docker/login-action@v1
